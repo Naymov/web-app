@@ -1,0 +1,54 @@
+<div class="container">
+	<section class="add-section">
+		<h1 class="center-align">Добавить событие</h1>
+		{{#if error}}
+			<p class="alert">{{error}}</p>
+		{{/if}}
+
+		<form action="/add" method="POST" novalidate>
+			<div class="input-field">
+				<input id="title" name="title" type="text" class="validate" required value="{{data.title}}">
+				<label for="title">Название события</label>
+				<span class="helper-text" data-error="Введите название"></span>
+			</div>
+
+			<div class="input-field">
+				<input id="img" name="img" type="text" class="validate" required value="{{data.img}}">
+				<label for="img">URL картинки</label>
+				<span class="helper-text" data-error="Введите url картинки"></span>
+			</div>
+
+			<div class="input-field">
+				<input id="date" name="date" type="text" class="datepicker validate" required value="{{data.date}}">
+				<label for="date">Укажите дату мероприятия</label>
+				<span class="helper-text" data-error="Неверная дата"></span>
+			</div>
+
+			<div class="input-field">
+				<input id="time" name="time" type="text" class="timepicker validate" required value="{{data.time}}">
+				<label for="time">Укажите время начала мероприятия</label>
+				<span class="helper-text" data-error="Неверное время"></span>
+			</div>
+
+			<div id="priceBlock" class="input-field priceBlock">
+				<input id="price" name="price" type="number" class="validate" min="1" value="{{data.price}}">
+				<label for="price">Цена входа</label>
+				<span class="helper-text" data-error="Введите цену"></span>
+			</div>
+
+			<div class="input-field">
+				<p>
+					<label>
+						<input id="indeterminate-checkbox" type="checkbox" required value="false"/>
+						<span>Бесплатный вход</span>
+					</label>
+				</p>
+				<input type="hidden" id="paidEntry" name="paidEntry" value="{{data.paidEntry}}">
+			</div>
+
+			<input type="hidden" name="_csrf" value="{{csrf}}">
+
+			<button class="btn #03a9f4 light-blue waves-effect waves-light add-btn">Добавить событие</button>
+		</form>
+	</section>
+</div>

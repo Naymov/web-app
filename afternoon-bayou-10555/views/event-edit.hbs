@@ -1,0 +1,49 @@
+<div class="container">
+	<section class="edit-section">
+		<h1>Редактировать {{event.title}}</h1>
+
+		<form action="/events/edit" method="POST" class="event-form">
+			<div class="input-field">
+				<input id="title" name="title" type="text" class="validate" required value="{{event.title}}">
+				<label for="title">Название события</label>
+				<span class="helper-text" data-error="Введите название"></span>
+			</div>
+
+			<div class="input-field">
+				<input id="price" name="price" type="number" class="validate" required min="1" value="{{event.price}}">
+				<label for="price">Цена входа</label>
+				<span class="helper-text" data-error="Введите цену"></span>
+			</div>
+
+			<div class="input-field">
+				<input id="img" name="img" type="text" class="validate" required value="{{event.img}}">
+				<label for="img">URL картинки</label>
+				<span class="helper-text" data-error="Введите url картинки"></span>
+			</div>
+
+			<div class="input-field">
+				<input id="date" name="date" type="text" class="datepicker validate" required value="{{event.date}}">
+				<label for="date">Укажите дату мероприятия</label>
+				<span class="helper-text" data-error="Неверная дата"></span>
+			</div>
+
+			<div class="input-field">
+				<input id="time" name="time" type="text" class="timepicker validate" required value="{{event.time}}">
+				<label for="time">Укажите время начала мероприятия</label>
+				<span class="helper-text" data-error="Неверное время"></span>
+			</div>
+
+			<input type="hidden" name="id" value="{{event.id}}">
+			<input type="hidden" name="_csrf" value="{{csrf}}">
+
+			<button type="submit" class="btn #03a9f4 light-blue waves-effect waves-light">Редактировать событие</button>
+		</form>
+
+		<form action="/events/remove" method="POST">
+			<input type="hidden" name="_csrf" value="{{csrf}}">
+			<input type="hidden" name="id" value="{{ event.id }}">
+			<button class="btn red waves-effect waves-light">Удалить событие</button>
+		</form>
+	</section>
+
+</div>
